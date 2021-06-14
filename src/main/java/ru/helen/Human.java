@@ -10,6 +10,13 @@ public class Human {
     public Human() {
     }
 
+    public Human(String name, String lastName, int age, String city) {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.city = city;
+    }
+
     @Override
     public String toString() {
         String data = this.name + " " + this.lastName + ", " +
