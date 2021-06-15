@@ -10,19 +10,24 @@ public class Main {
         ArrayList<Human> base = HumanFactory.create100Humans();
         base.add(new Human("Karl", "Sagan", 47, "FloridaCity"));
         base.add(new Human("Karl", "Engels", 50, "NY"));
-        System.out.println(base);
-        // TODO научиться правильно выводить список, что бы каждый человек с новой строки
+
+        for (Human human : base) {
+            System.out.println(human);
+        }
+
         System.out.println("Поиск по имени, фамилии, городу...");
+
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         // TODO разделить логику на управляющую (в класс контроллер) и бизнес-логику (в класс Searcher)
         while (true) {
+            System.out.println("\nВведите запрос...");
             String query = bufferedReader.readLine();
-            if (query.equalsIgnoreCase("all")) {
-                System.out.println(base);
-            } else if (query.equalsIgnoreCase("exit")) {
+            if (query.equalsIgnoreCase("exit")) {
                 break;
+            } else if (query.equalsIgnoreCase("all")) {
+                System.out.println(base);
             } else {
                 ArrayList<Human> results = new ArrayList<>();
                 for (Human person : base) {
