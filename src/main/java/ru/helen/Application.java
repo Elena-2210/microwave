@@ -7,10 +7,12 @@ import java.io.InputStreamReader;
 public class Application {
     /**
      * Запускает сервис, с помощью которого можно что-то поискать в базе.
+     *
      * @param dataBaseController - система управления базой данных.
      * @throws IOException
      */
     public static void startApp(DatabaseController dataBaseController) throws IOException {
+
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
@@ -18,6 +20,8 @@ public class Application {
             String query = bufferedReader.readLine();
             if (query.equalsIgnoreCase("exit")) {
                 break;
+            } else if (query.equalsIgnoreCase("help") || (query.equalsIgnoreCase("-help")) || (query.equalsIgnoreCase("--help"))) {
+                Help.showHelp();
             } else {
                 dataBaseController.search(query);
             }
