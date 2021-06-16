@@ -1,6 +1,8 @@
 package ru.helen;
 
-
+/**
+ * Дата-класс, описывающий модель человека.
+ */
 public class Human {
     private String name;
     private String lastName;

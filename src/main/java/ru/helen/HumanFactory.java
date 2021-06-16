@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
 
+
 public class HumanFactory {
     /**
      * Метод создает человека и заполняет его рандомными данными.

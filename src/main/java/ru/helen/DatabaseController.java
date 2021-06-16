@@ -2,6 +2,10 @@ package ru.helen;
 
 import java.util.ArrayList;
 
+/**
+ * @autor Elena Vasileva
+ * Система управления базой данных
+ */
 public class DatabaseController {
     private ArrayList<Human> base;
 
@@ -14,6 +18,9 @@ public class DatabaseController {
         this.printBase();
     }
 
+    /**
+     * Вывод базы на экран построчно.
+     */
     public void printBase() {
         for (Human human : base) {
             System.out.println(human);
@@ -28,6 +35,10 @@ public class DatabaseController {
         this.base = base;
     }
 
+    /**
+     * Поиск по базе
+     * @param query - Искомый запрос
+     */
     public void search(String query) {
         if (query.equalsIgnoreCase("all")) {
             printBase();
