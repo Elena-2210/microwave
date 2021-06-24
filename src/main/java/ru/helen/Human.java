@@ -1,8 +1,12 @@
 package ru.helen;
 
+import lombok.*;
+
 /**
  * Дата-класс, описывающий модель человека.
  */
+
+@Data
 public class Human {
     private String name;
     private String lastName;
@@ -16,45 +20,6 @@ public class Human {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
-        this.city = city;
-    }
-
-    @Override
-    public String toString() {
-        String data = this.name + " " + this.lastName + ", " +
-                this.age + ", " + this.city;
-        return data;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
         this.city = city;
     }
 
