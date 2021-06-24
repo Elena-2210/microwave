@@ -1,12 +1,16 @@
 package ru.helen;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 
 /**
  * @autor Elena Vasileva
  * Система управления базой данных
  */
+
 public class DatabaseController {
+    @Getter
     private ArrayList<Human> base;
 
     public DatabaseController() {
@@ -25,14 +29,6 @@ public class DatabaseController {
         for (Human human : base) {
             System.out.println(human);
         }
-    }
-
-    public ArrayList<Human> getBase() {
-        return base;
-    }
-
-    public void setBase(ArrayList<Human> base) {
-        this.base = base;
     }
 
     /**
