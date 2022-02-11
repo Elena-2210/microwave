@@ -15,6 +15,7 @@ public class EndOfWord {
         //  говорить что дата введена некорректно и просить ввести заново.
         //  Причем если пользователь уже корректно ввел первую дату то запрашивать у него на ввода только вторую дату.
         //  После вывода количества дней между датами начинать программу сначала.
+        System.out.println("Введите 2 даты");
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         Date date1 = sdf.parse(bufferedReader.readLine());
