@@ -6,7 +6,12 @@
 
     <groupId>org.example</groupId>
     <artifactId>javapadavan</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>microtasks</module>
+        <module>EL-42</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
