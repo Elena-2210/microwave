@@ -100,14 +100,14 @@ public class MicrowaveController implements Initializable {
         }
     }
 
-    private void showChickenWellDone() {
+    private void showChickenWellDonePicture() {
         if (model.getContainer().isChickenInside() && model.getContainer().isChickenWellDone()) {
             clearContainer();
             wellDoneChickenPicture.setVisible(true);
         }
     }
 
-    private void showChickenFired() {
+    private void showChickenFiredPicture() {
         if (model.getContainer().isChickenInside() && model.getContainer().isChickenFired()) {
             clearContainer();
             wellDoneChickenPicture.setVisible(true);
