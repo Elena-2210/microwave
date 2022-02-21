@@ -1,7 +1,11 @@
 package com.example.microwave;
 
 import com.example.microwave.abstractions.MicrowaveAbstractContainer;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class MicrowaveContainerImpl extends MicrowaveAbstractContainer {
 
     @Override
@@ -20,10 +24,6 @@ public class MicrowaveContainerImpl extends MicrowaveAbstractContainer {
 
     @Override
     public void openDoor() {
-    }
-
-    @Override
-    public void cookChicken() {
     }
 
     @Override

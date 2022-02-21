@@ -2,6 +2,7 @@ package com.example.microwave;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
@@ -13,7 +14,7 @@ public class MicrowaveController implements Initializable {
 
     private final MicrowaveModel model = new MicrowaveModel();
     @FXML
-    private Text timer;
+    private Text timerText;
     @FXML
     private ImageView freshChickenPicture;
     @FXML
@@ -21,31 +22,53 @@ public class MicrowaveController implements Initializable {
     @FXML
     private ImageView firedChickenPicture;
     @FXML
-    private Shape openedDoor;
+    private Shape openedDoorPicture;
     @FXML
-    private Shape closedDoor;
+    private Shape closedDoorPicture;
+    @FXML
+    private Button addOneMinuteTimerButton;
+    @FXML
+    private Button addTenSecondsTimerButton;
+    @FXML
+    private Button openDoorButton;
+    @FXML
+    private Button closeDoorButton;
+    @FXML
+    private Button putChickenButton;
+    @FXML
+    private Button extractChickenButton;
+    @FXML
+    private Button startButton;
+    @FXML
+    private Button stopButton;
+    @FXML
+    private Button resetButton;
 
     @FXML
-    public void plus1MinuteTimer() {
-
+    public void addOneMinuteTimer() {
+        model.getTimer().addOneMinute();
     }
 
     @FXML
-    public void plus10MinuteTimer() {
-
+    public void addTenSecondsTimer() {
+        model.getTimer().addTenSeconds();
     }
 
 
     @FXML
     public void openDoor() {
-        closedDoor.setVisible(false);
-        openedDoor.setVisible(true);
+        closedDoorPicture.setVisible(false);
+        openedDoorPicture.setVisible(true);
+        closeDoorButton.setDisable(false);
+        openDoorButton.setDisable(true);
     }
 
     @FXML
     public void closeDoor() {
-        closedDoor.setVisible(true);
-        openedDoor.setVisible(false);
+        closedDoorPicture.setVisible(true);
+        openedDoorPicture.setVisible(false);
+        closeDoorButton.setDisable(true);
+        openDoorButton.setDisable(false);
     }
 
 
@@ -56,6 +79,8 @@ public class MicrowaveController implements Initializable {
         model.getContainer().closeDoor();
         if (model.getContainer().isChickenInside()) {
             showChickenFresh();
+            putChickenButton.setDisable(true);
+            extractChickenButton.setDisable(false);
         }
     }
 
@@ -70,6 +95,8 @@ public class MicrowaveController implements Initializable {
         model.getContainer().closeDoor();
         if (model.getContainer().isChickenInside()) {
             clearContainer();
+            putChickenButton.setDisable(false);
+            extractChickenButton.setDisable(true);
         }
     }
 
@@ -90,8 +117,7 @@ public class MicrowaveController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         model.setDefaultState();
-        timer.setText(String.format("%02d:%02d", model.getTimer().getMinutes(), model.getTimer().getSeconds()));
-        freshChickenPicture.setVisible(false);
+        timerText.setText(String.format("%02d:%02d", model.getTimer().getMinutes(), model.getTimer().getSeconds()));
     }
 
     private void clearContainer() {
@@ -101,15 +127,15 @@ public class MicrowaveController implements Initializable {
     }
 
     @FXML
-    public void plus10Seconds() {
-    }
-
-    @FXML
     public void startHeating() {
+        startButton.setDisable(true);
+        stopButton.setDisable(false);
     }
 
     @FXML
     public void stopHeating() {
+        startButton.setDisable(false);
+        stopButton.setDisable(true);
     }
 
     @FXML

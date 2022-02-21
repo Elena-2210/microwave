@@ -15,7 +15,28 @@ public abstract class MicrowaveAbstractTimer {
      */
     public abstract void setStateToZero();
 
+    /**
+     * @return Количество минут на таймере
+     */
     public abstract Integer getMinutes();
+
+    /**
+     * @return Количество секунд на таймере
+     */
     public abstract Integer getSeconds();
 
+    /**
+     * Начать обратный отсчет
+     */
+    public abstract void startTimer();
+
+    /**
+     * Добавить к таймеру 1 минуту
+     */
+    public abstract void addOneMinute();
+
+    /**
+     * Добавить к таймеру 10 секунд
+     */
+    public abstract void addTenSeconds();
 }
