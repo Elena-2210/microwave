@@ -127,9 +127,9 @@
       <StackPane layoutX="477.0" layoutY="48.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="54.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeWidth="5.0" width="126.0" StackPane.alignment="CENTER" />
-            <Text fx:id="timerText" fill="#2fd700" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="10.0" text="23:46" textAlignment="RIGHT" wrappingWidth="112.21630859375" StackPane.alignment="CENTER">
+            <Text fx:id="timerText" fill="#2fd700" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="10.0" text="23:46" textAlignment="CENTER" wrappingWidth="112.21630859375" StackPane.alignment="CENTER">
                <font>
-                  <Font name="Silom" size="36.0" />
+                  <Font name="Lato Regular" size="36.0" />
                </font>
             </Text>
          </children>
