@@ -3,7 +3,6 @@ package com.example.microwave;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 
@@ -50,15 +49,18 @@ public class MicrowaveController implements Initializable {
     }
 
 
-
     @FXML
     public void putChicken() {
         model.getContainer().openDoor();
         model.getContainer().putChicken();
         model.getContainer().closeDoor();
         if (model.getContainer().isChickenInside()) {
-            freshChickenPicture.setVisible(true);
+            showChickenFresh();
         }
+    }
+
+    private void showChickenFresh() {
+        freshChickenPicture.setVisible(true);
     }
 
     @FXML
