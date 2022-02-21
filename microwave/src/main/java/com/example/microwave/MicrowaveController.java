@@ -1,16 +1,20 @@
 package com.example.microwave;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import lombok.SneakyThrows;
 
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MicrowaveController implements Initializable {
 
@@ -45,6 +49,7 @@ public class MicrowaveController implements Initializable {
     private Button stopButton;
     @FXML
     private Button resetButton;
+    private Timeline timeline;
 
     @FXML
     public void addOneMinuteTimer() {
@@ -155,8 +160,19 @@ public class MicrowaveController implements Initializable {
     @SneakyThrows
     @FXML
     public void resetTimer() {
-        timerText.setText("00:00");
-        Thread.sleep(1000);
-        timerText.setText("");
+        AtomicInteger skipKeyframes = new AtomicInteger(1);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(3), actionEvent -> {
+            timerText.setText("");
+            if (skipKeyframes.get() > 0) {
+                skipKeyframes.decrementAndGet();
+            } else {
+                timeline.stop();
+            }
+        });
+        timeline = new Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.play();
+        timerText.setText("--:--");
     }
 }
