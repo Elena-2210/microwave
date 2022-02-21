@@ -6,8 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
+import lombok.SneakyThrows;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MicrowaveController implements Initializable {
@@ -117,7 +119,19 @@ public class MicrowaveController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         model.setDefaultState();
-        timerText.setText(String.format("%02d:%02d", model.getTimer().getMinutes(), model.getTimer().getSeconds()));
+        timerText.setText(String.format("%s:%s", getMinutesForView(), getSecondsForView()));
+    }
+
+    private String getSecondsForView() {
+        return Optional.ofNullable(model.getTimer().getSeconds())
+                .map(v -> String.format("%2d", v))
+                .orElse("--");
+    }
+
+    private String getMinutesForView() {
+        return Optional.ofNullable(model.getTimer().getMinutes())
+                .map(v -> String.format("%2d", v))
+                .orElse("--");
     }
 
     private void clearContainer() {
@@ -138,7 +152,11 @@ public class MicrowaveController implements Initializable {
         stopButton.setDisable(true);
     }
 
+    @SneakyThrows
     @FXML
     public void resetTimer() {
+        timerText.setText("00:00");
+        Thread.sleep(1000);
+        timerText.setText("");
     }
 }

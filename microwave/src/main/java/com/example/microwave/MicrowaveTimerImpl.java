@@ -4,6 +4,8 @@ import com.example.microwave.abstractions.MicrowaveAbstractTimer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Calendar;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class MicrowaveTimerImpl extends MicrowaveAbstractTimer {
@@ -25,12 +27,12 @@ public class MicrowaveTimerImpl extends MicrowaveAbstractTimer {
 
     @Override
     public void addOneMinute() {
-
+        getState().roll(Calendar.MINUTE, 1);
     }
 
     @Override
     public void addTenSeconds() {
-
+        getState().roll(Calendar.SECOND, 10);
     }
 
     @Override
