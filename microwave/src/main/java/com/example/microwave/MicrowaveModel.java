@@ -2,7 +2,6 @@ package com.example.microwave;
 
 import com.example.microwave.abstractions.MicrowaveAbstractContainer;
 import com.example.microwave.abstractions.MicrowaveAbstractTimer;
-import lombok.Data;
 import lombok.Getter;
 
 @Getter

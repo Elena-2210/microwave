@@ -64,30 +64,41 @@ public class MicrowaveController implements Initializable {
 
     @FXML
     public void openDoor() {
+        model.getContainer().openDoor();
         closedDoorPicture.setVisible(false);
         openedDoorPicture.setVisible(true);
         closeDoorButton.setDisable(false);
         openDoorButton.setDisable(true);
+        if (!model.getContainer().isChickenInside()) {
+            putChickenButton.setDisable(false);
+            extractChickenButton.setDisable(true);
+        } else {
+            putChickenButton.setDisable(true);
+            extractChickenButton.setDisable(false);
+        }
     }
 
     @FXML
     public void closeDoor() {
+        model.getContainer().closeDoor();
         closedDoorPicture.setVisible(true);
         openedDoorPicture.setVisible(false);
         closeDoorButton.setDisable(true);
         openDoorButton.setDisable(false);
+        putChickenButton.setDisable(true);
+        extractChickenButton.setDisable(true);
     }
 
 
     @FXML
     public void putChicken() {
-        model.getContainer().openDoor();
-        model.getContainer().putChicken();
-        model.getContainer().closeDoor();
-        if (model.getContainer().isChickenInside()) {
-            showChickenFresh();
-            putChickenButton.setDisable(true);
-            extractChickenButton.setDisable(false);
+        if (!model.getContainer().isChickenInside()) {
+            model.getContainer().putChicken();
+            if (model.getContainer().isChickenInside()) {
+                showChickenFresh();
+                putChickenButton.setDisable(true);
+                extractChickenButton.setDisable(false);
+            }
         }
     }
 
@@ -97,13 +108,13 @@ public class MicrowaveController implements Initializable {
 
     @FXML
     public void extractChicken() {
-        model.getContainer().openDoor();
-        model.getContainer().extractChicken();
-        model.getContainer().closeDoor();
-        if (model.getContainer().isChickenInside()) {
-            clearContainer();
-            putChickenButton.setDisable(false);
-            extractChickenButton.setDisable(true);
+        if (!model.getContainer().isDoorClosed()) {
+            model.getContainer().extractChicken();
+            if (!model.getContainer().isChickenInside()) {
+                clearContainer();
+                putChickenButton.setDisable(false);
+                extractChickenButton.setDisable(true);
+            }
         }
     }
 

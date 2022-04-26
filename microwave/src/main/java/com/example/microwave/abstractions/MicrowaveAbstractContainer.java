@@ -15,13 +15,6 @@ public abstract class MicrowaveAbstractContainer {
      */
     private ContainerState containerState = ContainerState.CLOSED;
 
-
-    /**
-     * @return true = дверь открыта, false = дверь закрыта
-     */
-    public abstract boolean isDoorOpened();
-
-
     /**
      * @return false = дверь открыта, true = дверь закрыта
      */
@@ -39,7 +32,7 @@ public abstract class MicrowaveAbstractContainer {
 
 
     /**
-     * Микроволновка закрыта, внутри пусто
+     * Установить состояние по умолчанию. Микроволновка закрыта, внутри пусто
      */
     public abstract void setDefaultState();
 
