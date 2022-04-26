@@ -158,8 +158,10 @@ public class MicrowaveController implements Initializable {
 
     @FXML
     public void startHeating() {
-        startButton.setDisable(true);
-        stopButton.setDisable(false);
+        if (model.getContainer().isDoorClosed()) {
+            startButton.setDisable(true);
+            stopButton.setDisable(false);
+        }
     }
 
     @FXML
